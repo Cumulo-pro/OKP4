@@ -43,9 +43,9 @@ Cumulo Spanish Resources: http://cumulo.pro/okp4.html
 <h3>⚙️Hardware requirements</h3>
 ● Memory: 8 GB RAM
 
-● CPU: 2 núcleos
+● CPU: 2 core
 
-● Disk: 200 GB de almacenamiento
+● Disk: 200 GB of storage
 
 <h3>🛠 Manual installation</h3>
 
