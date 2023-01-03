@@ -85,7 +85,7 @@ okp4d version # 3.0.0</pre>
 okp4d init $OKP4_MONIKER --chain-id $OKP4_CHAIN_ID</pre>
 
 <h4>Download genesis</h4>
-<pre>url https://raw.githubusercontent.com/okp4/networks/main/chains/nemeton-1/genesis.json > $HOME/.okp4d/config/genesis.json
+<pre>curl https://raw.githubusercontent.com/okp4/networks/main/chains/nemeton-1/genesis.json > $HOME/.okp4d/config/genesis.json
 sha256sum $HOME/.okp4d/config/genesis.json #2ec25f81cc2abecbc0da3de45b052ea3314d0d658b1b7f4c7b6a48d09254c742</pre>
 
 <h4>Set seeds and peers</h4>
