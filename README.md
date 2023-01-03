@@ -105,7 +105,7 @@ sed -i 's|pruning-interval = "0"|pruning-interval = "17"|g' $HOME/.okp4d/config/
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0001uknow"|g' $HOME/.okp4d/config/app.toml</pre>
 
 <h4>Activate prometheus<h4>
-<pre>sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.okp4-app/config/config.toml</pre>
+<pre>sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.okp4/config/config.toml</pre>
 
 <h4>Clean up old data<h4>
 <pre>okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book</pre>
