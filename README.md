@@ -238,7 +238,7 @@ source $HOME/.bash_profile</pre>
 <h4>Delete wallet</h4>
 <pre>okp4d keys delete $OKP4_WALLET</pre>
 <h4>Transfer funds</h4>
-<pre>okp4d tx bank send $OKP4_WALLET_ADDRESS <TO_OKP4_WALLET_ADDRESS> 800000000uknow --gas auto --gas-adjustment 1.3</pre>
+<pre>okp4d tx bank send $OKP4_WALLET_ADDRESS <TO_OKP4_WALLET_ADDRESS> 800000000uknow --gas auto --gas-adjustment 1.3 --fees 14uknow</pre>
 
 <h3>💬 Governance</h3>
 <h4>List all proposals</h4>
