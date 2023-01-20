@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cumulo blockchain services: OKP4, The Open Knowledge Protocol</title>	
+</head>
+
+<body>
+<h3>Validator Services </h3>
+<table border="0" class="chainservice">
+  <tr>
+    <td class="enunc">RPC:</td>
+    <td><span class="codigo" id="p1"> http://okp4-rpc.cumulo.pro</span> </td>
+  </tr>
+  <tr>
+    <td class="enunc">API / REST:</td>
+    <td><span class="codigo" id="p2"> http://okp4-api.cumulo.pro</span> </td>
+  </tr>
+  <tr>
+    <td class="enunc">gRPC:</td>
+    <td><span class="codigo" id="p3"> http://grpc.okp.cumulo.pro</span></td>
+  </tr>
+  <tr>
+    <td class="enunc">LIVE PEER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><span class="codigo" id="p4">069717e7104fccf26e2f7e3be04a82c626fbfe13@51.68.204.169:26643</span></td>
+  </tr>
+   <tr>
+    <td class="enunc">addrbook (24h updated):</td>
+    <td><span class="codigo" id="p5"> <a href="http://okp4-data.cumulo.pro/addrbook.json" target="_blank">http://okp4-data.cumulo.pro/addrbook.json</a></span></td>
+  </tr>
+</table>
+<hr>
+<h4>Snapshot</h4>
+<object data="http://74.208.94.42/okp4datos/logsnap.html" width="100%" frameborder="0" style=""></object>
+<p>The snapshots package implements automatic support for Tendermint state synchronisation in Cosmos SDK-based applications, such as OKP4. To use the snapshot perform the following steps:</p>
+<br>
+<h5>pruning</h5>
+<p>We suggest you make  pruning adjustment on your node as on the node where you serve your snapshot. In our case the pruning is tuned like this:</p>
+
+    <code class="code">pruning="custom"<br>
+pruning_keep_recent="100"<br>
+pruning_keep_every="0"<br>
+pruning_interval="10"<br>
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.okp4d/config/app.toml<br>
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.okp4d/config/app.toml<br>
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.okp4d/config/app.toml<br>
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.okp4d/config/app.toml</code>
+<br><br>
+<h5>How To Process OKP4 Snapshot</h5>
+
+    <code class="code">sudo systemctl stop okp4d<br>
+<br>
+cp $HOME/.okp4d/data/priv_validator_state.json $HOME/.okp4d/priv_validator_state.json.backup<br>
+okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book<br>
+<br>
+SNAP_FILE=$(curl -s http://74.208.94.42/okp4datos/ | egrep -o ">OKP4.*\.tar" | tr -d ">")<br>
+curl http://74.208.94.42/okp4datos/${SNAP_FILE} | tar -xf - -C $HOME/.okp4d/data<br>
+<br>
+mv $HOME/.okp4d/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json                      <br>
+<br>
+sudo systemctl restart okp4d<br>
+sudo journalctl -u okp4d -f --no-hostname -o cat
+    </code>
+</div>
+
+        </div>
+       
+            
+	</section>
+
+</body>
+</html>
